@@ -92,10 +92,6 @@ namespace FinanceManagerData.Migrations
                     b.Property<double>("Balance")
                         .HasColumnType("float");
 
-                    b.Property<string>("Number")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("OwnerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -119,6 +115,9 @@ namespace FinanceManagerData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Kind")
                         .HasColumnType("int");
 
@@ -126,7 +125,7 @@ namespace FinanceManagerData.Migrations
 
                     b.HasIndex("BankAccountId");
 
-                    b.ToTable("Expenditure");
+                    b.ToTable("Expenditures");
                 });
 
             modelBuilder.Entity("FinanceManagerData.Models.Income", b =>
@@ -141,6 +140,9 @@ namespace FinanceManagerData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
@@ -148,7 +150,7 @@ namespace FinanceManagerData.Migrations
 
                     b.HasIndex("BankAccountId");
 
-                    b.ToTable("Income");
+                    b.ToTable("Incomes");
                 });
 
             modelBuilder.Entity("FinanceManagerData.Models.Transaction", b =>
@@ -158,6 +160,9 @@ namespace FinanceManagerData.Migrations
 
                     b.Property<double>("Amount")
                         .HasColumnType("float");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ReceiverAccountId")
                         .HasColumnType("nvarchar(450)");

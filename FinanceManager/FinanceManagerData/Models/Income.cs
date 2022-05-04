@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace FinanceManagerData.Models
@@ -14,13 +15,16 @@ namespace FinanceManagerData.Models
         public double Amount { get; set; }
 
         [Required]
+        public DateTime Date { get; set; }
+
+        [Required]
         public string BankAccountId { get; set; }
 
         public BankAccount BankAccount { get; set; }
 
         public enum IncomeType
         {
-            Job,
+            Salary,
             Rent,
             Scholarship,
             Other

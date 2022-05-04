@@ -9,9 +9,6 @@ namespace FinanceManagerData.Models
         public string Id { get; set; }
 
         [Required]
-        public string Number { get; set; }
-
-        [Required]
         public double Balance { get; set; }
 
         [Required]

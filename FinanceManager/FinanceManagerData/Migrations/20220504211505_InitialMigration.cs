@@ -157,7 +157,6 @@ namespace FinanceManagerData.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Balance = table.Column<double>(type: "float", nullable: false),
                     OwnerId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -173,19 +172,20 @@ namespace FinanceManagerData.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Expenditure",
+                name: "Expenditures",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Kind = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BankAccountId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Expenditure", x => x.Id);
+                    table.PrimaryKey("PK_Expenditures", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Expenditure_BankAccounts_BankAccountId",
+                        name: "FK_Expenditures_BankAccounts_BankAccountId",
                         column: x => x.BankAccountId,
                         principalTable: "BankAccounts",
                         principalColumn: "Id",
@@ -193,19 +193,20 @@ namespace FinanceManagerData.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Income",
+                name: "Incomes",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BankAccountId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Income", x => x.Id);
+                    table.PrimaryKey("PK_Incomes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Income_BankAccounts_BankAccountId",
+                        name: "FK_Incomes_BankAccounts_BankAccountId",
                         column: x => x.BankAccountId,
                         principalTable: "BankAccounts",
                         principalColumn: "Id",
@@ -218,6 +219,7 @@ namespace FinanceManagerData.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SenderAccountId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     ReceiverAccountId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
@@ -283,13 +285,13 @@ namespace FinanceManagerData.Migrations
                 column: "OwnerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Expenditure_BankAccountId",
-                table: "Expenditure",
+                name: "IX_Expenditures_BankAccountId",
+                table: "Expenditures",
                 column: "BankAccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Income_BankAccountId",
-                table: "Income",
+                name: "IX_Incomes_BankAccountId",
+                table: "Incomes",
                 column: "BankAccountId");
 
             migrationBuilder.CreateIndex(
@@ -321,10 +323,10 @@ namespace FinanceManagerData.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Expenditure");
+                name: "Expenditures");
 
             migrationBuilder.DropTable(
-                name: "Income");
+                name: "Incomes");
 
             migrationBuilder.DropTable(
                 name: "Transactions");

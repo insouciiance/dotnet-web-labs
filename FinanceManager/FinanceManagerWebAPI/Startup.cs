@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using FinanceManagerData.Contexts;
 using FinanceManagerData.Models;
+using FinanceManagerData.Repositories;
 using FinanceManagerServices.Authentication;
 
 namespace FinanceManagerWebAPI
@@ -35,7 +36,7 @@ namespace FinanceManagerWebAPI
             
             services.AddScoped<JwtTokenHelper>();
 
-            services.AddPooledDbContextFactory<AppDbContext>(options =>
+            services.AddDbContextPool<AppDbContext>(options =>
             {
                 string connectionString = Environment.IsDevelopment()
                     ? Configuration["LocalConnectionString"]
@@ -43,6 +44,8 @@ namespace FinanceManagerWebAPI
                 
                 options.UseSqlServer(connectionString);
             });          
+
+            services.AddScoped<IAppRepository, AppDbContextRepository>();
 
             services
                 .AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -105,7 +108,7 @@ namespace FinanceManagerWebAPI
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

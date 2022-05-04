@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace FinanceManagerData.Models
@@ -12,6 +13,9 @@ namespace FinanceManagerData.Models
 
         [Required]
         public double Amount { get; set; }
+
+        [Required]
+        public DateTime Date { get; set; }
 
         [Required]
         public string BankAccountId { get; set; }

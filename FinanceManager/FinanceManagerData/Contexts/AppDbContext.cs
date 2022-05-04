@@ -4,7 +4,6 @@ using FinanceManagerData.Models;
 
 namespace FinanceManagerData.Contexts
 {
-    // TODO: add IRepository<T> and use it instead of DbContext directly.
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public override DbSet<ApplicationUser> Users { get; set; }
@@ -12,6 +11,10 @@ namespace FinanceManagerData.Contexts
         public DbSet<BankAccount> BankAccounts { get; set; }
 
         public DbSet<Transaction> Transactions { get; set; }
+
+        public DbSet<Income> Incomes { get; set; }
+
+        public DbSet<Expenditure> Expenditures { get; set; }
         
         public AppDbContext(DbContextOptions options) : base(options) { }
 
