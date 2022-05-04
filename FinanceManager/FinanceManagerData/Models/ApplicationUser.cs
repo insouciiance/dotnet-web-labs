@@ -5,6 +5,6 @@ namespace FinanceManagerData.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public IEnumerable<BankAccount> BankAccounts { get; set; }
+        public virtual IEnumerable<BankAccount> BankAccounts { get; set; }
     }
 }

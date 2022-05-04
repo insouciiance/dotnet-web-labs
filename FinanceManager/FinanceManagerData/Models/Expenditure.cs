@@ -20,7 +20,7 @@ namespace FinanceManagerData.Models
         [Required]
         public string BankAccountId { get; set; }
 
-        public BankAccount BankAccount { get; set; }
+        public virtual BankAccount BankAccount { get; set; }
 
         public enum ExpenditureKind
         {

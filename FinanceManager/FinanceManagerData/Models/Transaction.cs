@@ -18,8 +18,8 @@ namespace FinanceManagerData.Models
 
         public string ReceiverAccountId { get; set; }
 
-        public BankAccount SenderAccount { get; set; }
+        public virtual BankAccount SenderAccount { get; set; }
 
-        public BankAccount ReceiverAccount { get; set; }
+        public virtual BankAccount ReceiverAccount { get; set; }
     }
 }

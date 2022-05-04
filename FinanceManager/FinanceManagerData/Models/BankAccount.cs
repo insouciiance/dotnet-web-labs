@@ -16,12 +16,12 @@ namespace FinanceManagerData.Models
 
         public ApplicationUser Owner { get; set; }
 
-        public IEnumerable<Transaction> SenderTransactions { get; set; }
+        public virtual IEnumerable<Transaction> SenderTransactions { get; set; }
 
-        public IEnumerable<Transaction> ReceiverTransactions { get; set; }
+        public virtual IEnumerable<Transaction> ReceiverTransactions { get; set; }
 
-        public IEnumerable<Expenditure> Expenditures { get; set; }
+        public virtual IEnumerable<Expenditure> Expenditures { get; set; }
 
-        public IEnumerable<Income> Incomes { get; set; }
+        public virtual IEnumerable<Income> Incomes { get; set; }
     }
 }
